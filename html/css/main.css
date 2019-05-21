@@ -1,0 +1,11 @@
+.url-bar-wrapper {
+  transition: opacity 1s ease-in-out infinite;
+  display: none;
+  opacity: 0;
+
+  border-radius: 15px;
+}
+.url-bar-wrapper.show {
+  display: block;
+  opacity: 1;
+}
