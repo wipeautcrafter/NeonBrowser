@@ -1,5 +1,6 @@
 const {app, BrowserWindow} = require("electron");
 const path = require("path");
+require("./menu.js");
 
 let win = null;
 
@@ -13,7 +14,7 @@ function newWindow() {
     }
   });
 
-  win.loadFile(path.join(__dirname, "index.html"));
+  win.loadFile(path.join(__dirname, "html", "index.html"));
 }
 
 app.on("ready", newWindow);

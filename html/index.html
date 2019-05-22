@@ -4,13 +4,21 @@
     <meta charset="utf-8">
     <title>NeonBrowser</title>
 
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/tabs.js"></script>
+    <script src="js/main.js"></script>
   </head>
   <body>
     <div class="url-bar-wrapper">
-      <input class="form-control url-bar">
+      <div class="container">
+        <div class="input-group url-bar-input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-globe text-primary"></i></span>
+          </div>
+          <input class="form-control url-bar" placeholder="Enter a URL or type keywords to search...">
+        </div>
+      </div>
     </div>
     <div class="tabs"></div>
   </body>
