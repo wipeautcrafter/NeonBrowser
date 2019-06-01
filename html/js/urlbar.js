@@ -9,7 +9,7 @@ module.exports = {
 
       let type = 0;
 
-      if(query.match(/^about:[A-z0-9]+$/gm))
+      if(query.match(/^neon:[A-z0-9]+$/gm))
         type = 3;
       else if(query.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm))
         type = 2;
@@ -47,7 +47,7 @@ module.exports = {
   toggle: function() {
     $(".url-bar-wrapper").toggleClass("show");
     if($(".url-bar-wrapper").hasClass("show")) {
-      $(".url-bar").val($(".tab.focus").children("webview")[0].getURL());
+      $(".url-bar").val(tabs.encodeUrl($(".tab.focus").children("webview")[0].getURL()));
       $(".url-bar").focus();
       $(".url-bar-icon").html(`<i class="${settings.searchBar.icon.unknown}"></i>`);
     }

@@ -5,14 +5,14 @@ const path = require("path");
 module.exports = {
   navigate: function(url) {
     const view = $(".tab.focus").children("webview.front");
-    view[0].loadURL(module.exports.filterUrl(url));
+    view[0].loadURL(module.exports.decodeUrl(url));
   },
   addPage: function() {
     const tab = $(".tab.focus");
     const view = $("<webview></webview>");
     tab.children(".front").removeClass("front");
     view.addClass("front");
-    view.attr("src", module.exports.filterUrl(settings.startPage));
+    view.attr("src", module.exports.decodeUrl(settings.startPage));
     tab.on("click mouseover", function() {
       $(".tab.focus").removeClass("focus");
       $(this).addClass("focus");
@@ -63,9 +63,13 @@ module.exports = {
     if($(".tab").length > 0)
       $(".tab").eq(0).addClass("focus");
   },
-  filterUrl: function(url) {
+  decodeUrl: function(url) {
     if(!url.match(/^((https?|file):\/\/|neon:).+$/)) url = "http://"+url;
     url = url.replace(/^neon:(.+)$/, "file://"+path.join(__dirname, "..", "BrowserPages", "$1", "index.html"));
+    return url;
+  },
+  encodeUrl: function(url) {
+    url = url.replace(new RegExp("file:///"+path.join(__dirname, "..", "BrowserPages", "([A-z]+)", "index.html").replace(/\\/g, "/").replace(/\./g, "\\.")), "neon:$1");
     return url;
   }
 };
