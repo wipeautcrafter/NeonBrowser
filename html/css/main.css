@@ -1,18 +1,25 @@
+body, html {
+  overflow: hidden;
+}
 .url-bar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+
   height: 100vh;
   width: 100vw;
 
   background: rgba(0, 0, 0, 0.1);
 
   transition: opacity 1s ease-in-out;
+  opacity: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  opacity: 0;
 }
 .url-bar-wrapper.show {
-  display: flex;
   opacity: 1;
+  display: flex;
 }
 .url-bar-group {
   display: flex;
@@ -36,4 +43,33 @@
   height: 2rem;
   font-size: 1em;
   border-radius: 0px 5px 5px 0px;
+}
+.tabs {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.tab {
+  flex: 1 1 auto;
+  border: 2px solid rgba(0, 0, 0, 0);
+  transition: border 0.2s ease-in-out;
+}
+.tab.focus {
+  border: 2px solid rgba(66, 139, 255, 0.25);
+}
+.tab > webview {
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+}
+.tab > webview.front {
+  display: flex;
+  z-index: 99;
+}
+.page-indicator {
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }

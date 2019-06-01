@@ -23,13 +23,77 @@ const template = [
     ]
   },
   {
-    label: "Actions",
+    label: "Page",
     submenu: [
       {
         label: "Search",
         accelerator: "CmdOrCtrl+S",
         click (item, focusedWindow) {
-          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.search()");
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.urlbar.toggle()");
+        }
+      },
+      {
+        label: "History Forward",
+        accelerator: "Alt+Right",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.page.history.forward()");
+        }
+      },
+      {
+        label: "History Backward",
+        accelerator: "Alt+Left",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.page.history.backward()");
+        }
+      }
+    ]
+  },
+  {
+    label: "Tabs",
+    submenu: [
+      {
+        label: "Add Page",
+        accelerator: "CmdOrCtrl+N",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.addPage()");
+        }
+      },
+      {
+        label: "Cycle Pages",
+        accelerator: "CmdOrCtrl+Tab",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.cyclePages()");
+        }
+      },
+      {
+        label: "Close Page",
+        accelerator: "CmdOrCtrl+K",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.closePage()");
+        }
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Add Tab",
+        accelerator: "CmdOrCtrl+Shift+N",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.addTab()");
+        }
+      },
+      {
+        label: "Cycle Tabs",
+        accelerator: "CmdOrCtrl+Shift+Tab",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.cycleTabs()");
+        }
+      },
+      {
+        label: "Close Tab",
+        accelerator: "CmdOrCtrl+Shift+K",
+        click (item, focusedWindow) {
+          if(focusedWindow) focusedWindow.webContents.executeJavaScript("browser.tabs.closeTab()");
         }
       }
     ]
