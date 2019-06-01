@@ -57,6 +57,8 @@ module.exports = {
     $(".tab.focus").children("webview.front").remove();
     if($(".tab.focus").children("webview").length > 0)
       $(".tab.focus").children("webview").eq(0).addClass("front");
+    else
+      $(".tab.focus").remove();
   },
   closeTab: function() {
     $(".tab.focus").remove();
